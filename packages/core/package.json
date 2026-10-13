@@ -1,0 +1,19 @@
+{
+  "name": "@pounce/core",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "maria2": "^0.4.1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./connection": "./src/public/connection.ts"
+  }
+}

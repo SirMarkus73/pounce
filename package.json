@@ -1,0 +1,17 @@
+{
+  "name": "pounce",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run --cwd packages/tui dev"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@types/bun": "latest"
+},
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "workspaces": ["packages/core", "packages/tui"]
+}

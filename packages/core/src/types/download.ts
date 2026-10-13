@@ -1,0 +1,22 @@
+export enum STATUS {
+  ACTIVE,
+  WAITING,
+  PAUSED,
+  ERROR,
+  COMPLETED,
+  REMOVED,
+}
+
+export type Download = {
+  gid: string
+  status: STATUS
+  speedInBytes: bigint
+  files: {
+    index: number
+    path: string
+    length: number
+    completedLength: number
+  }[]
+}
+
+export type Downloads = Download[]

@@ -3,8 +3,9 @@ import {
   refreshDownloads,
   suscribeToDownloads,
 } from "@pounce/core"
-import { Box, Text } from "ink"
+import { Box } from "ink"
 import { useEffect, useSyncExternalStore } from "react"
+import { Download } from "./download"
 
 export const Downloads = () => {
   const downloads = useSyncExternalStore(suscribeToDownloads, getDownloads)
@@ -26,13 +27,7 @@ export const Downloads = () => {
   return (
     <Box flexDirection="column">
       {downloads.map((download) => (
-        <Box key={download.gid} flexDirection="column">
-          {download.files.map((f) => (
-            <Text key={f.index}>
-              {f.path} {f.completedLength} / {f.length}
-            </Text>
-          ))}
-        </Box>
+        <Download key={download.gid} download={download} />
       ))}
     </Box>
   )

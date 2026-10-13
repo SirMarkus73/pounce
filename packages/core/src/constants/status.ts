@@ -1,0 +1,8 @@
+export enum STATUS {
+  ACTIVE,
+  WAITING,
+  PAUSED,
+  ERROR,
+  COMPLETED,
+  REMOVED,
+}

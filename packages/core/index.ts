@@ -1,6 +1,7 @@
 import { type Aria2DownloadState, aria2, type Conn } from "maria2"
 import { getConnection } from "./src/connection"
-import { type Downloads, STATUS } from "./src/types/download"
+import { STATUS } from "./src/constants"
+import type { Downloads } from "./src/types/download"
 
 export async function hasAria2() {
   try {

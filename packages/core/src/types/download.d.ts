@@ -1,11 +1,4 @@
-export enum STATUS {
-  ACTIVE,
-  WAITING,
-  PAUSED,
-  ERROR,
-  COMPLETED,
-  REMOVED,
-}
+import type { STATUS } from "../constants/status"
 
 export type Download = {
   gid: string

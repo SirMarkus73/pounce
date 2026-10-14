@@ -15,7 +15,7 @@ export const App: React.FC<AppProps> = ({ aria2Version }) => {
   return (
     <Box flexDirection="column">
       <Box flexDirection="column">
-        <Text>Bounce.cat ({aria2Version})</Text>
+        <Text>Pounce ({aria2Version})</Text>
         <Input value={url} onValueChange={setUrl} autoFocus />
         <Button
           onClick={() => {

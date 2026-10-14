@@ -5,11 +5,11 @@ import { Downloads } from "./components/downloads"
 import { Button } from "./ui/components/button"
 import { Input } from "./ui/components/Input"
 
-type TestProps = {
+type AppProps = {
   aria2Version: string
 }
 
-export const App = ({ aria2Version }: TestProps) => {
+export const App: React.FC<AppProps> = ({ aria2Version }) => {
   const [url, setUrl] = useState("")
 
   return (

@@ -1,6 +1,5 @@
-import { Box, Text, useFocus, useInput } from "ink"
+import { Box, Text, useFocus, useInput, usePaste } from "ink"
 import type React from "react"
-import { useRef, useState } from "react"
 
 type InputProps = {
   autoFocus?: boolean
@@ -8,9 +7,19 @@ type InputProps = {
   onValueChange: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const Input = ({ autoFocus, onValueChange, value }: InputProps) => {
-  const [input, setInput] = useState("gola")
+export const Input: React.FC<InputProps> = ({
+  autoFocus,
+  onValueChange,
+  value,
+}) => {
   const { isFocused } = useFocus({ autoFocus })
+
+  usePaste(
+    (text) => {
+      onValueChange(text.trim())
+    },
+    { isActive: isFocused },
+  )
 
   useInput((input, key) => {
     if (!isFocused) return

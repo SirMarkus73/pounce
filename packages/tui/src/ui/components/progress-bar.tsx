@@ -7,11 +7,11 @@ type ProgressBarProps = {
   color?: string
 }
 
-export const ProgressBar = ({
+export const ProgressBar: React.FC<ProgressBarProps> = ({
   value,
   width = 30,
   color = "green",
-}: ProgressBarProps) => {
+}) => {
   const ratio = Math.min(1, Math.max(0, value))
   const filled = Math.round(ratio * width)
 

@@ -1,14 +1,14 @@
 import {
   getDownloads,
   refreshDownloads,
-  suscribeToDownloads,
+  subscribeToDownloads,
 } from "@pounce-dl/core"
 import { Box } from "ink"
 import { useEffect, useSyncExternalStore } from "react"
 import { Download } from "./download"
 
 export const Downloads = () => {
-  const downloads = useSyncExternalStore(suscribeToDownloads, getDownloads)
+  const downloads = useSyncExternalStore(subscribeToDownloads, getDownloads)
 
   const hasDownloads = downloads.length > 0
 

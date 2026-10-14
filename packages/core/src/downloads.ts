@@ -1,47 +1,7 @@
-import { execFile } from "node:child_process"
-import { promisify } from "node:util"
 import { type Aria2DownloadState, aria2, type Conn } from "maria2"
-import { getConnection } from "./src/connection"
-import { STATUS } from "./src/constants"
-import type { Downloads } from "./src/types/download"
-
-const execFileAsync = promisify(execFile)
-
-export async function hasAria2() {
-  try {
-    const { stdout } = await execFileAsync("aria2c", ["--version"])
-
-    const match = stdout.match(/^aria2c?\s+\S+\s+(\d+(?:\.\d+)+)/im)
-    const version = match?.[1]
-
-    if (!version) {
-      throw new Error("Unable to find aria2 version")
-    }
-
-    return [true, version] as const
-  } catch (e) {
-    if ((e as NodeJS.ErrnoException).code === "ENOENT") {
-      return [false, undefined] as const
-    }
-
-    throw e
-  }
-}
-
-export const getVersion = async () => {
-  const conn = await getConnection()
-  return await aria2.getVersion(conn)
-}
-
-export const addUrisToQueue = async (uris: string[]): Promise<string> => {
-  const conn = await getConnection()
-
-  return await aria2.addUri(conn, uris)
-}
-
-export const addUriToQueue = async (uri: string): Promise<string> => {
-  return await addUrisToQueue([uri])
-}
+import { STATUS } from "./constants"
+import { getConnection } from "./internal/connection"
+import type { Downloads } from "./types"
 
 const fetchDownloads = (conn: Conn) => aria2.tellActive(conn)
 
@@ -116,7 +76,7 @@ const setupDownloadListeners = async () => {
   aria2.onDownloadError(conn, refreshDownloads)
 }
 
-export const suscribeToDownloads = (callback: () => void) => {
+export const subscribeToDownloads = (callback: () => void) => {
   setupDownloadListeners()
 
   listeners.add(callback)

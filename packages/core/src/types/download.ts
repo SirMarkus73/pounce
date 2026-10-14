@@ -1,4 +1,4 @@
-import type { STATUS } from "../constants/status"
+import type { STATUS } from "../constants"
 
 export type Download = {
   gid: string

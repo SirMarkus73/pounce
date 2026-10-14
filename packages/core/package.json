@@ -1,6 +1,6 @@
 {
   "name": "@pounce-dl/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Core de pounce: cliente de aria2 para gestionar descargas",
   "type": "module",
   "files": [
@@ -8,27 +8,27 @@
   ],
   "exports": {
     ".": {
-      "source": "./index.ts",
+      "source": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
     "./connection": {
-      "source": "./src/public/connection.ts",
-      "types": "./dist/src/public/connection.d.ts",
-      "default": "./dist/src/public/connection.js"
+      "source": "./src/connection.ts",
+      "types": "./dist/connection.d.ts",
+      "default": "./dist/connection.js"
     },
     "./constants": {
       "source": "./src/constants/index.ts",
-      "types": "./dist/src/constants/index.d.ts",
-      "default": "./dist/src/constants/index.js"
+      "types": "./dist/constants/index.d.ts",
+      "default": "./dist/constants/index.js"
     },
     "./types": {
       "source": "./src/types/index.ts",
-      "types": "./dist/src/types/index.d.ts"
+      "types": "./dist/types/index.d.ts"
     }
   },
   "scripts": {
-    "build": "rm -rf dist && bun build ./index.ts ./src/public/connection.ts ./src/constants/index.ts --outdir dist --root . --target node --splitting && tsc -p tsconfig.build.json",
+    "build": "rm -rf dist && bun build ./src/index.ts ./src/connection.ts ./src/constants/index.ts --outdir dist --root src --target node --splitting && tsc -p tsconfig.build.json",
     "prepublishOnly": "bun run build"
   },
   "engines": {

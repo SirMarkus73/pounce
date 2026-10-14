@@ -1,13 +1,13 @@
 {
-  "name": "@pounce/tui",
+  "name": "@pounce-dl/tui",
   "module": "index.ts",
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun --watch index.tsx"
+    "dev": "bun --conditions=source --watch index.tsx"
   },
   "dependencies": {
-    "@pounce/core": "workspace:*",
+    "@pounce-dl/core": "workspace:*",
     "react": "^19.3.0",
     "ink": "^8.0.0"
   },

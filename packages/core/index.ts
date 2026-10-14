@@ -1,11 +1,15 @@
+import { execFile } from "node:child_process"
+import { promisify } from "node:util"
 import { type Aria2DownloadState, aria2, type Conn } from "maria2"
 import { getConnection } from "./src/connection"
 import { STATUS } from "./src/constants"
 import type { Downloads } from "./src/types/download"
 
+const execFileAsync = promisify(execFile)
+
 export async function hasAria2() {
   try {
-    const stdout = await Bun.$`aria2c --version`.text()
+    const { stdout } = await execFileAsync("aria2c", ["--version"])
 
     const match = stdout.match(/^aria2c?\s+\S+\s+(\d+(?:\.\d+)+)/im)
     const version = match?.[1]
@@ -16,10 +20,7 @@ export async function hasAria2() {
 
     return [true, version] as const
   } catch (e) {
-    if (
-      e instanceof Bun.$.ShellError &&
-      e.stderr.includes("command not found")
-    ) {
+    if ((e as NodeJS.ErrnoException).code === "ENOENT") {
       return [false, undefined] as const
     }
 

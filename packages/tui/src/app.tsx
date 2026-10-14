@@ -1,4 +1,4 @@
-import { addUriToQueue } from "@pounce/core"
+import { addUriToQueue } from "@pounce-dl/core"
 import { Box, Spacer, Text } from "ink"
 import { useState } from "react"
 import { Downloads } from "./components/downloads"

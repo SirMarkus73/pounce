@@ -1,5 +1,5 @@
-import { STATUS } from "@pounce/core/constants"
-import type { Download as DownloadData } from "@pounce/core/types"
+import { STATUS } from "@pounce-dl/core/constants"
+import type { Download as DownloadData } from "@pounce-dl/core/types"
 import { Box, Spacer, Text } from "ink"
 import { ProgressBar } from "../ui/components/progress-bar"
 

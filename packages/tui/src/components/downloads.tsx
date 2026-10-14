@@ -2,7 +2,7 @@ import {
   getDownloads,
   refreshDownloads,
   suscribeToDownloads,
-} from "@pounce/core"
+} from "@pounce-dl/core"
 import { Box } from "ink"
 import { useEffect, useSyncExternalStore } from "react"
 import { Download } from "./download"

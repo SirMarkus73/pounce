@@ -1,5 +1,5 @@
-import { hasAria2 } from "@pounce/core"
-import { connect, disconnect } from "@pounce/core/connection"
+import { hasAria2 } from "@pounce-dl/core"
+import { connect, disconnect } from "@pounce-dl/core/connection"
 import { render } from "ink"
 import { App } from "./src/app"
 
